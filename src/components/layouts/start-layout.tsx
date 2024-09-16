@@ -12,7 +12,7 @@ export const StartLayout: FCWithChildren<Props> = ({ children, isCentered, isHei
 			<main
 				className={cn('container mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4', {
 					'items-center justify-center': isCentered,
-					'h-[calc(100dvh-128px)] pb-[64px] max-sm:pb-0': isHeightFull,
+					'h-[calc(100dvh-128px)] pb-14': isHeightFull,
 				})}
 			>
 				{children}
