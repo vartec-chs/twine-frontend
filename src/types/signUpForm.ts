@@ -6,11 +6,19 @@ const step1 = z
 		lastName: z.string().min(1, 'Фамилия обязательно'),
 		birthDay: z.string().min(1, 'День рождения обязателен').max(2, 'Длина даты 2'),
 		birthMonth: z.string().min(1, 'Месяц рождения обязателен').max(2, 'Длина месяца 2'),
-		birthYear: z.string().min(4, 'Год рождения обязателен').max(4, 'Длина года 4'),
+		birthYear: z.string().min(1, 'Год рождения обязателен').max(4, 'Длина года 4'),
 	})
 	.refine((data) => Number(data.birthDay) >= 1 && Number(data.birthDay) <= 31, {
 		message: 'Некорректная дата',
 		path: ['birthDay'],
+	})
+	.refine((data) => Number(data.birthMonth) >= 1 && Number(data.birthMonth) <= 12, {
+		message: 'Некорректная дата',
+		path: ['birthMonth'],
+	})
+	.refine((data) => Number(data.birthYear) >= 1900 && Number(data.birthYear )<= new Date().getFullYear(), {
+		message: 'Некорректная дата',
+		path: ['birthYear'],
 	})
 
 const step2 = z.object({
