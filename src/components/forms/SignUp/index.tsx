@@ -14,5 +14,5 @@ export const SignUpForm: FC = () => {
 		[2]: <SignUpStep2 />,
 		[3]: <SignUpStep3 />,
 		[4]: <SignUpStep4 />,
-	}[step]
+	}[3]
 }

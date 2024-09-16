@@ -14,27 +14,27 @@ import welcomeIllustration from '@/assets/illustrations/welcome.svg'
 export const Home: FC = () => {
 	return (
 		<StartLayout isCentered isHeightFull>
-			<div className='flex w-full flex-row items-center justify-center gap-12 max-sm:mt-8 max-sm:flex-col max-sm:gap-2'>
+			<div className='flex w-full flex-row items-center justify-center gap-12 max-md:flex-col max-sm:mt-8 max-sm:gap-2'>
 				<img
 					src={welcomeIllustration}
 					alt=''
-					className='h-[20dvh] w-[20dvw] dark:hidden max-sm:h-[20dvh] max-sm:w-[60dvw]'
+					className='h-[25dvh] w-[25dvw] dark:hidden max-md:h-[25dvh] max-md:w-[70dvw]'
 				/>
 
 				<img
 					src={welcomeIllustrationDark}
 					alt=''
-					className='hidden h-[20dvh] w-[20dvw] dark:block max-sm:h-[20dvh] max-sm:w-[60dvw]'
+					className='hidden h-[25dvh] w-[25dvw] dark:block max-md:h-[25dvh] max-md:w-[70dvw]'
 				/>
 
-				<div className='flex w-full max-w-[400px] gap-2 rounded-2xl border p-2 max-sm:flex-col'>
-					<div className='flex h-full w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-100 p-4 dark:bg-zinc-900 max-sm:h-[25dvh]'>
+				<div className='flex w-full max-w-[400px] gap-2 rounded-2xl border p-2 max-md:max-w-none max-md:flex-col'>
+					<div className='flex h-[25dvh] w-full flex-col items-center justify-center gap-2 rounded-xl bg-slate-100 p-4 dark:bg-zinc-900'>
 						<Logo className='h-12 w-12' />
 						<h2 className='text-3xl font-bold'>Twine</h2>
 						<span className='text-sm font-medium text-slate-500'>Добро пожаловать!</span>
 					</div>
 
-					<div className='flex w-full flex-col items-center justify-center gap-2 max-sm:h-[30dvh]'>
+					<div className='flex h-[25dvh] w-full flex-col items-center justify-center gap-2'>
 						<Button asChild>
 							<Link to={paths.auth.signIn}>Войти</Link>
 						</Button>
