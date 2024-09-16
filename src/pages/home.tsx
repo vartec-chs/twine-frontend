@@ -8,6 +8,7 @@ import { Separator } from '@/components/ui/separator'
 
 import { paths } from '@/configs/paths'
 
+import welcomeIllustrationDark from '@/assets/illustrations/welcome-dark.svg'
 import welcomeIllustration from '@/assets/illustrations/welcome.svg'
 
 export const Home: FC = () => {
@@ -17,7 +18,13 @@ export const Home: FC = () => {
 				<img
 					src={welcomeIllustration}
 					alt=''
-					className='h-[20dvh] w-[20dvw] max-sm:h-[20dvh] max-sm:w-[60dvw]'
+					className='h-[20dvh] w-[20dvw] dark:hidden max-sm:h-[20dvh] max-sm:w-[60dvw]'
+				/>
+
+				<img
+					src={welcomeIllustrationDark}
+					alt=''
+					className='hidden h-[20dvh] w-[20dvw] dark:block max-sm:h-[20dvh] max-sm:w-[60dvw]'
 				/>
 
 				<div className='flex w-full max-w-[400px] gap-2 rounded-2xl border p-2 max-sm:flex-col'>
