@@ -35,6 +35,7 @@ export const ToggleThemeButton: FC = () => {
 
 		// @ts-ignore
 		const { top, left, width, height } = ref.current.getBoundingClientRect()
+
 		const x = left + width / 2
 		const y = top + height / 2
 		const right = window.innerWidth - left
