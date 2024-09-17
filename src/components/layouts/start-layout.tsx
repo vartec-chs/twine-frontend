@@ -15,7 +15,7 @@ const Layout: FCWithChildren<Props> = ({ children, isCentered, isHeightFull }) =
 			<main
 				className={cn('container mx-auto flex max-w-6xl flex-col gap-4 px-4 py-4', {
 					'items-center justify-center': isCentered,
-					'h-[calc(100dvh-128px)] pb-4': isHeightFull,
+					'h-[calc(100dvh-128px)] pb-4 max-sm:pb-10': isHeightFull,
 				})}
 			>
 				{children}

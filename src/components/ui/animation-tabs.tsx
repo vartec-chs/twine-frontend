@@ -69,7 +69,7 @@ export const AnimationTabs = ({
 		<div className='flex w-full flex-col items-center'>
 			<div
 				className={cn(
-					'shadow-inner-shadow flex cursor-pointer space-x-1 rounded-lg border border-none bg-zinc-50 px-[3px] py-[3.2px] dark:bg-zinc-800',
+					'shadow-inner-shadow flex cursor-pointer space-x-1 rounded-lg border border-zinc-200 dark:border-zinc-900 bg-zinc-50 px-[3px] py-[3.2px] dark:bg-zinc-800',
 					className,
 					rounded,
 				)}
@@ -79,7 +79,7 @@ export const AnimationTabs = ({
 						key={tab.id}
 						onClick={() => handleTabClick(tab.id)}
 						className={cn(
-							'relative flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-sm font-medium text-black transition focus-visible:outline-none focus-visible:outline-1 focus-visible:ring-1 ',
+							'relative flex items-center gap-2 rounded-lg px-3.5 py-1.5 text-sm font-medium text-black transition focus-visible:outline-none focus-visible:outline-1 focus-visible:ring-1',
 							activeTab === tab.id
 								? 'text-black dark:text-white'
 								: 'text-neutral-500 hover:text-neutral-400',
