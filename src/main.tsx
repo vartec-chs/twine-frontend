@@ -9,9 +9,13 @@ import { router } from '@/configs/routes'
 
 import './index.css'
 
-createRoot(document.getElementById('root')!).render(
-	<ThemeProvider defaultTheme='system' storageKey='twine-theme'>
-		<ToastContainer theme='colored' />
-		<RouterProvider router={router} />
-	</ThemeProvider>,
-)
+const App = () => {
+	return (
+		<ThemeProvider defaultTheme='system' storageKey='twine-theme'>
+			<ToastContainer theme='colored' />
+			<RouterProvider router={router} />
+		</ThemeProvider>
+	)
+}
+
+createRoot(document.getElementById('root')!).render(<App />)
