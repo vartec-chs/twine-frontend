@@ -18,7 +18,11 @@ export const Home: FC = () => {
 		<StartLayout isCentered isHeightFull>
 			<div className='flex w-full flex-row items-center justify-center gap-12 max-md:flex-col max-sm:mt-8 max-sm:gap-2'>
 				<AnimatePresence>
-					<motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}>
+					<motion.div
+						initial={{ opacity: 0, scale: 0.8 }}
+						animate={{ opacity: 1, scale: 1 }}
+						exit={{ opacity: 0, scale: 0.8 }}
+					>
 						<img
 							src={welcomeIllustration}
 							alt=''
@@ -31,11 +35,9 @@ export const Home: FC = () => {
 							className='hidden h-[25dvh] w-[25dvw] dark:block max-md:h-[25dvh] max-md:w-[70dvw]'
 						/>
 					</motion.div>
-				
 
-				
 					<motion.div
-						className='w-full max-w-[400px]'
+						className='w-full md:max-w-[400px]'
 						style={{ overflow: 'hidden' }}
 						initial={{ height: 0 }}
 						animate={{ height: 'auto' }}
