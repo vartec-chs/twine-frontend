@@ -11,7 +11,7 @@ import './index.css'
 
 const App = () => {
 	return (
-		<ThemeProvider defaultTheme='system' storageKey='twine-theme'>
+		<ThemeProvider defaultTheme='dark' storageKey='twine-theme'>
 			<ToastContainer theme='colored' />
 			<RouterProvider router={router} />
 		</ThemeProvider>
