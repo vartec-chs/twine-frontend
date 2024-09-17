@@ -25,10 +25,10 @@ export const UserList: FCWithClassName = ({ className }) => {
 							<motion.div
 								key={index}
 								layout
-								initial={{ opacity: 0, height: 0, y: -10, scale: 0.8 }}
-								animate={{ opacity: 1, height: 'auto', y: 0, scale: 1 }}
-								exit={{ opacity: 0, height: 0, y: 0, scale: 0.8 }}
-								transition={{ duration: 0.2, delay: index * 0.05 }}
+								initial={{ opacity: 0, height: 0, x: -100,  scale: 0.8 }}
+								animate={{ opacity: 1, height: 'auto', x: 0,  scale: 1 }}
+								exit={{ opacity: 0, height: 0, x: +100,  scale: 0.8 }}
+								transition={{ duration: 0.08, delay: index * 0.05 }}
 							>
 								<UserCard />
 							</motion.div>
