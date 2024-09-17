@@ -41,7 +41,7 @@ export const AuthPage: FC = () => {
 					]}
 				/>
 			</div>
-			<Button variant="link" >
+			<Button variant='link' size='sm'>
 				<Link to={paths.home}>На главную</Link>
 			</Button>
 		</StartLayout>
