@@ -23,7 +23,7 @@ export const StartLayout: FCWithChildren<Props> = ({ children, isCentered, isHei
 					!isHeightFull && 'fixed bottom-0',
 				)}
 			>
-				<span className="text-sm text-slate-500">© 2024 Twine</span>
+				<span className='text-sm text-slate-500'>© 2024 Twine</span>
 			</footer>
 		</>
 	)

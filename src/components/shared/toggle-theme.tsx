@@ -8,12 +8,12 @@ import { Moon, Sun } from 'lucide-react'
 
 import { useTheme } from '../provider/theme-provider'
 import { Button } from '../ui/button'
-import { cn } from '@/lib/utils'
 
 export const ToggleThemeButton: FC = () => {
 	const { theme, setTheme } = useTheme()
 
 	const [isDarkMode, setIsDarkMode] = useState(theme === 'dark')
+
 	const ref = useRef(null)
 
 	const toggleDarkMode = async (isDarkMode: boolean) => {
@@ -65,15 +65,21 @@ export const ToggleThemeButton: FC = () => {
 	}, [isDarkMode])
 
 	return (
-		<Button ref={ref} onClick={() => toggleDarkMode(!isDarkMode)} variant='ghost' size='icon'>
-			<motion.div
+		<Button
+			asChild
+			ref={ref}
+			onClick={() => toggleDarkMode(!isDarkMode)}
+			variant='ghost'
+			size='icon'
+		>
+			<motion.button
 				key={theme === 'dark' ? 'dark' : 'light'}
-				initial={{ opacity: 0, rotate: theme === 'dark' ? 180 : 0, scale: 0.8 }}
-				animate={{ opacity: 1, rotate: theme === 'dark' ? 0 : 180, scale: 1 }}
+				// initial={{ opacity: 1, scale: 1, rotate: 180 }}
+				// animate={{ opacity: 1, scale: 1, rotate: 0 }}
 			>
-				<Sun className={cn('h-5 w-5', isDarkMode && 'hidden')} />
-				<Moon className={cn('h-5 w-5', !isDarkMode && 'hidden')} />
-			</motion.div>
+				<Sun className='h-5 w-5 dark:hidden' />
+				<Moon className='hidden h-5 w-5 dark:block' />
+			</motion.button>
 		</Button>
 	)
 }
