@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import { SignUpForm } from '@/components/forms/SignUp'
 import { SignInForm } from '@/components/forms/sign-in'
-import { StartLayout } from '@/components/layouts/start-layout'
 import { AnimationTabs } from '@/components/ui/animation-tabs'
 import { Button } from '@/components/ui/button'
 
