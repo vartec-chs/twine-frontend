@@ -74,8 +74,8 @@ export const ToggleThemeButton: FC = () => {
 		>
 			<motion.button
 				key={theme === 'dark' ? 'dark' : 'light'}
-				// initial={{ opacity: 1, scale: 1, rotate: 180 }}
-				// animate={{ opacity: 1, scale: 1, rotate: 0 }}
+				initial={{ opacity: 1, scale: 1, rotate: 180 }}
+				animate={{ opacity: 1, scale: 1, rotate: 0 }}
 			>
 				<Sun className='h-5 w-5 dark:hidden' />
 				<Moon className='hidden h-5 w-5 dark:block' />

@@ -16,10 +16,13 @@ const step1 = z
 		message: 'Некорректная дата',
 		path: ['birthMonth'],
 	})
-	.refine((data) => Number(data.birthYear) >= 1900 && Number(data.birthYear )<= new Date().getFullYear(), {
-		message: 'Некорректная дата',
-		path: ['birthYear'],
-	})
+	.refine(
+		(data) => Number(data.birthYear) >= 1900 && Number(data.birthYear) <= new Date().getFullYear(),
+		{
+			message: 'Некорректная дата',
+			path: ['birthYear'],
+		},
+	)
 
 const step2 = z.object({
 	phone: z
@@ -33,7 +36,10 @@ const step3 = z.object({
 		.string()
 		.min(3, 'Минимальная длина 3')
 		.max(32, 'Максимальная длина 32')
-		.regex(/^[a-z0-9][a-z0-9_-]*[a-z0-9]$/, 'Некорректное имя пользователя'),
+		.regex(
+			/^[a-z0-9][a-z0-9_-]*[a-z0-9]$/,
+			'Только строчные латинские буквы, цифры, дефис и нижнее подчеркивание',
+		),
 })
 
 const step4 = z

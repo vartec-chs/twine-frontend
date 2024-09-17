@@ -21,7 +21,7 @@ export const AuthPage: FC = () => {
 	}
 
 	return (
-		<StartLayout isCentered isHeightFull>
+		<>
 			<div className='w-full max-w-md rounded-2xl bg-zinc-100 p-4 shadow dark:bg-zinc-900'>
 				<AnimationTabs
 					className='mb-4'
@@ -44,6 +44,6 @@ export const AuthPage: FC = () => {
 			<Button variant='link' size='sm'>
 				<Link to={paths.home}>На главную</Link>
 			</Button>
-		</StartLayout>
+		</>
 	)
 }

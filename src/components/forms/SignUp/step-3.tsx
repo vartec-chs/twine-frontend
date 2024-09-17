@@ -74,7 +74,7 @@ export const SignUpStep3: FC = () => {
 						Назад
 					</Button>
 
-					<Button disabled={isLoading} className='mt-2 w-full' type='submit'>
+					<Button disabled={isLoading || !form.formState.isValid} className='mt-2 w-full' type='submit'>
 						{isLoading ? <Loader2 className='mr-2 h-6 w-6 animate-spin' /> : 'Далее'}
 					</Button>
 				</div>
