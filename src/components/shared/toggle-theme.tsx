@@ -55,7 +55,6 @@ export const ToggleThemeButton: FC = () => {
 	}
 
 	useEffect(() => {
-		// setTimeout(() => {
 		if (isDarkMode) {
 			document.documentElement.classList.add('dark')
 			setTheme('dark')
@@ -68,9 +67,9 @@ export const ToggleThemeButton: FC = () => {
 	return (
 		<Button ref={ref} onClick={() => toggleDarkMode(!isDarkMode)} variant='ghost' size='icon'>
 			<motion.div
-				key={isDarkMode ? 'dark' : 'light'}
-				initial={{ opacity: 0, rotate: isDarkMode ? 180 : 0 }}
-				animate={{ opacity: 1, rotate: isDarkMode ? 0 : 180 }}
+				key={theme === 'dark' ? 'dark' : 'light'}
+				initial={{ opacity: 0, rotate: theme === 'dark' ? 180 : 0, scale: 0.8 }}
+				animate={{ opacity: 1, rotate: theme === 'dark' ? 0 : 180, scale: 1 }}
 			>
 				<Sun className={cn('h-5 w-5', isDarkMode && 'hidden')} />
 				<Moon className={cn('h-5 w-5', !isDarkMode && 'hidden')} />
