@@ -8,7 +8,7 @@ export const UserCard: FCWithClassName = ({ className }) => {
 	return (
 		<div
 			className={cn(
-				'flex w-full cursor-pointer flex-row gap-2 rounded-lg border p-2 duration-200 hover:bg-zinc-200 active:bg-zinc-300 dark:hover:bg-zinc-800 dark:active:bg-zinc-700',
+				'flex w-full cursor-pointer flex-row gap-2 rounded-lg p-2 duration-200 hover:bg-zinc-200 active:bg-zinc-300 dark:hover:bg-zinc-800 dark:active:bg-zinc-700',
 				className,
 			)}
 		>

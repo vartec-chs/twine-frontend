@@ -98,6 +98,21 @@ html {
 	-webkit-border-radius: 16px;
 }
 
+textarea {
+	&::-webkit-scrollbar {
+		opacity: 0;
+		display: none;
+		width: 10px;
+		height: 10px;
+	}
+
+	@media (hover: hover) {
+		&:hover::-webkit-scrollbar {
+			opacity: 1;
+			display: block;
+		}
+	}
+}
 
 ::view-transition-old(root),
 ::view-transition-new(root) {

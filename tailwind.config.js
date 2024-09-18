@@ -71,7 +71,7 @@ export default {
 					'0%': { transform: 'translateY(-100%)' },
 					'100%': { transform: 'translateY(0%)' },
 				},
-				'click': {
+				click: {
 					'0%': { transform: 'scale(1)' },
 					'50%': { transform: 'scale(0.8)' },
 					'100%': { transform: 'scale(1)' },
@@ -82,9 +82,9 @@ export default {
 				'slide-left': 'slide-left 0.5s ease-out',
 				'slide-up': 'slide-up 0.5s ease-out',
 				'slide-down': 'slide-down 0.5s ease-out',
-				'click': 'click 0.2s ease-out',
+				click: 'click 0.2s ease-out',
 			},
 		},
 	},
-	plugins: [require('tailwindcss-animate')],
+	plugins: [require('tailwindcss-animate'), require('tailwind-scrollbar')],
 }

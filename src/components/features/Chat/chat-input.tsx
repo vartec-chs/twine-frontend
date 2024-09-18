@@ -1,8 +1,10 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
+
+import { useAutosizeTextArea } from '@/hooks/use-autosize-text-area'
 
 import { type FCWithClassName } from '@/types/general'
 
@@ -12,16 +14,21 @@ import { cn } from '@/lib/utils'
 
 export const ChatInput: FCWithClassName = ({ className }) => {
 	const [text, setText] = useState('')
+	const textAreaRef = useRef<HTMLTextAreaElement>(null)
+
+	useAutosizeTextArea(textAreaRef.current, text)
 
 	return (
-		<div className={cn('relative flex w-full items-center gap-2 border-t p-2', className)}>
+		<div className={cn('relative flex w-full items-center border-t p-2', className)}>
 			<Button className='rounded-lg' variant='ghost' size='icon'>
 				<Paperclip className='h-5 w-5' />
 			</Button>
 			<textarea
+				ref={textAreaRef}
 				value={text}
 				onChange={(e) => setText(e.target.value)}
 				wrap='soft'
+				rows={1}
 				maxLength={2048}
 				minLength={1}
 				autoFocus
@@ -42,15 +49,15 @@ export const ChatInput: FCWithClassName = ({ className }) => {
 				aria-owns='message'
 				aria-required='false'
 				name='message'
-				className='h-10 max-h-[15dvh] min-h-10 w-full rounded-md bg-transparent p-2 text-sm outline-none'
+				className='scrollbar-thumb-zinc-300 scrollbar-track-zinc-100 scrollbar-thin dark:scrollbar-thumb-zinc-700 dark:scrollbar-track-zinc-900 scrollbar-thumb-rounded min-h-9 max-h-[18dvh]  w-full resize-none rounded-md bg-transparent p-2 text-sm outline-none'
 				placeholder='Сообщение'
 			/>
 
 			<AnimatePresence>
-				<div className='relative h-full w-16'>
+				<div className='relative flex h-full w-16 items-center justify-center'>
 					{text.length > 0 ? (
 						<motion.div
-							className='active:animate-click m absolute right-0 top-auto'
+							className='m absolute right-0 top-auto active:animate-click'
 							key='button1'
 							initial={{ opacity: 0, scale: 0.8 }}
 							animate={{ opacity: 1, scale: 1 }}
@@ -76,7 +83,7 @@ export const ChatInput: FCWithClassName = ({ className }) => {
 							transition={{ duration: 0.3 }}
 						>
 							<Button
-								className='active:animate-click h-10 w-12 rounded-lg max-md:hover:bg-transparent'
+								className='h-10 w-12 rounded-lg active:animate-click max-md:hover:bg-transparent'
 								disabled={!!text}
 								variant={'ghost'}
 								size='icon'

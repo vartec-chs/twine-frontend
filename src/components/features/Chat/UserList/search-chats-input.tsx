@@ -21,7 +21,7 @@ export const SearchChatsInput: FCWithClassName<Props> = ({ className, onChange }
 	return (
 		<div
 			className={cn(
-				'flex w-full items-center gap-2 rounded-md border px-2 py-1 max-md:py-1.5',
+				'flex w-full items-center gap-2 rounded-md bg-zinc-200 dark:bg-zinc-800 px-2 py-1 max-md:py-1.5',
 				className,
 			)}
 		>
