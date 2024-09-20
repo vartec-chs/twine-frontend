@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import { RoutersProvider } from '@/components/provider/routers-provider'
 import { ThemeProvider } from '@/components/provider/theme-provider'
+import { ConfirmDialogProvider } from '@/components/ui/confirm-dialog'
 
 import './index.css'
 
@@ -11,7 +12,9 @@ const App = () => {
 	return (
 		<ThemeProvider defaultTheme='system' storageKey='twine-theme'>
 			<ToastContainer theme='colored' />
-			<RoutersProvider />
+			<ConfirmDialogProvider>
+				<RoutersProvider />
+			</ConfirmDialogProvider>
 		</ThemeProvider>
 	)
 }

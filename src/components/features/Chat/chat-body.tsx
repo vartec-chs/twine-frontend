@@ -8,7 +8,8 @@ import { Loader2 } from 'lucide-react'
 
 import { ChatMessage } from './chat-message'
 import { cn } from '@/lib/utils'
-import { useInfiniteScroll, useList } from '@siberiacancode/reactuse'
+import { useList } from '@siberiacancode/reactuse'
+import { useInfiniteScroll } from '@/hooks/use-infinite-top-scroll'
 
 const messages: { message: string; time: string; isMe?: boolean }[] = []
 
@@ -32,21 +33,26 @@ export const ChatBody: FCWithClassName = ({ className }) => {
 
 			for (let i = 0; i < 10; i++) {
 				messages.push({
-					message: 'Hello',
+					message: 'Hello' + '' + Math.random(),
 					time: '10:00',
 					isMe: Math.random() > 0.5,
 				})
 			}
 
-			list.set((prev) => [...prev, ...messages])
+			list.set((prev) => [...messages, ...prev])
 		},
-		{ distance: 10 },
+		{ distance: 10, direction: 'top' },
 	)
 
 	return (
 		<div className={cn('flex h-full w-full flex-col overflow-y-auto px-2', className)}>
 			<ScrollArea ref={infiniteScroll.ref}>
 				<div className='my-2 flex flex-col gap-2'>
+					{infiniteScroll.isLoading && (
+						<div className='mb-2 flex w-full items-center justify-center'>
+							<Loader2 className='animate-spin' />
+						</div>
+					)}
 					<AnimatePresence>
 						{list.value.map((message, i) => (
 							<motion.div
@@ -66,11 +72,6 @@ export const ChatBody: FCWithClassName = ({ className }) => {
 							</motion.div>
 						))}
 					</AnimatePresence>
-					{infiniteScroll.isLoading && (
-						<div className='mb-2 flex w-full items-center justify-center'>
-							<Loader2 className='animate-spin' />
-						</div>
-					)}
 				</div>
 			</ScrollArea>
 		</div>

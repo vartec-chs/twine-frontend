@@ -11,6 +11,7 @@ import { type FCWithClassName } from '@/types/general'
 import { Mic, Paperclip, SendHorizontal } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
+import { FilePicker } from '@/components/shared/file-picker'
 
 export const ChatInput: FCWithClassName = ({ className }) => {
 	const [text, setText] = useState('')
@@ -20,9 +21,7 @@ export const ChatInput: FCWithClassName = ({ className }) => {
 
 	return (
 		<div className={cn('relative flex w-full items-center border-t p-2', className)}>
-			<Button className='rounded-lg' variant='ghost' size='icon'>
-				<Paperclip className='h-5 w-5' />
-			</Button>
+			<FilePicker />
 			<textarea
 				ref={textAreaRef}
 				value={text}

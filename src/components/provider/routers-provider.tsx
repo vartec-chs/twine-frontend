@@ -4,6 +4,7 @@ import { AuthPage } from '@/pages/auth'
 import { ChatsPage } from '@/pages/chats'
 import { HomePage } from '@/pages/home'
 import { NotFoundPage } from '@/pages/not-found'
+import { TestPage } from '@/pages/test'
 
 import { paths } from '@/configs/paths'
 
@@ -18,6 +19,7 @@ export const RoutersProvider = () => {
 					<Route index element={<HomePage />} />
 					<Route path={paths.auth.signIn} element={<AuthPage />} />
 					<Route path={paths.auth.signUp} element={<AuthPage />} />
+					<Route path='test' element={<TestPage />} />
 					<Route path='*' element={<NotFoundPage />} />
 				</Route>
 
