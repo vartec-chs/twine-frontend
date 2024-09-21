@@ -1,16 +1,16 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
+import { AnimationPageDiv } from '@/components/layouts/animation-page-div'
 import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
 
 import { FCWithClassName } from '@/types/general'
+
+import { Loader2 } from 'lucide-react'
 
 import { SearchChatsInput } from './search-chats-input'
 import { UserCard } from './user-card'
 import { cn } from '@/lib/utils'
 import { useInfiniteScroll, useList } from '@siberiacancode/reactuse'
-import { Loader2 } from 'lucide-react'
-import { AnimationPageDiv } from '@/components/layouts/animation-page-div'
-
 
 type User = {
 	id: string
@@ -52,11 +52,12 @@ export const UserList: FCWithClassName = ({ className }) => {
 
 			listUsers.set((prev) => [...prev, ...newUsers])
 		},
-		{ distance: 10, },
+		{ distance: 10 },
 	)
 
 	return (
 		<AnimationPageDiv
+			as='section'
 			className={cn(
 				'w-[35%] rounded-l-2xl bg-zinc-100 p-2 dark:bg-zinc-900 max-lg:w-[40%] max-md:w-full max-md:rounded-none md:border',
 				className,
@@ -74,16 +75,16 @@ export const UserList: FCWithClassName = ({ className }) => {
 								initial={{ opacity: 0, scale: 0.9 }}
 								animate={{ opacity: 1, scale: 1 }}
 								exit={{ opacity: 0, scale: 0.8 }}
-								transition={{ duration: 0.3, }}
+								transition={{ duration: 0.3 }}
 							>
 								<UserCard {...user} />
 							</motion.div>
 						))}
 						{infiniteScroll.isLoading && (
-						<div className='mb-2 flex w-full items-center justify-center'>
-							<Loader2 className='animate-spin' />
-						</div>
-					)}
+							<div className='mb-2 flex w-full items-center justify-center'>
+								<Loader2 className='animate-spin' />
+							</div>
+						)}
 					</AnimatePresence>
 				</div>
 

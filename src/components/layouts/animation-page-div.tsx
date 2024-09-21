@@ -31,7 +31,7 @@ const routeVariantsRight = {
 }
 
 type AnimationPageDivProps = {
-	as?: 'div' | 'section'
+	as?: 'section' | 'div'
 	isDisabled?: boolean
 	isLeftAnimation?: boolean
 }
@@ -39,7 +39,7 @@ type AnimationPageDivProps = {
 export const AnimationPageDiv: FCWithCAndCN<AnimationPageDivProps> = ({
 	className,
 	children,
-	as = 'div',
+	as: Comp = 'div',
 	isDisabled = false,
 	isLeftAnimation = false,
 	...props
@@ -47,10 +47,21 @@ export const AnimationPageDiv: FCWithCAndCN<AnimationPageDivProps> = ({
 	const isMobile = useIsMobile()
 
 	if (!isMobile || isDisabled) {
-		return {
-			['div']: <div className={className}>{children}</div>,
-			['section']: <section className={className}>{children}</section>,
-		}[as]
+		return <Comp className={className}>{children}</Comp>
+	}
+
+	if (Comp === 'section') {
+		return (
+			<motion.section
+				variants={isLeftAnimation ? routeVariantsLeft : routeVariantsRight}
+				initial='initial'
+				animate='final'
+				className={className}
+				{...props}
+			>
+				{children}
+			</motion.section>
+		)
 	}
 
 	return (

@@ -19,6 +19,7 @@ export const Chat: FCWithClassName = ({ className }) => {
 
 	return (
 		<AnimationPageDiv
+			as='section'
 			isLeftAnimation
 			{...swipe}
 			className={cn(
