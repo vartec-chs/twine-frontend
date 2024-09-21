@@ -1,5 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 
+import { useEffect } from 'react'
+
 import { ScrollArea } from '@/components/ui/scroll-area'
 
 import { useInfiniteScroll } from '@/hooks/use-infinite-top-scroll'
@@ -12,18 +14,22 @@ import { ChatMessage } from './chat-message'
 import { cn } from '@/lib/utils'
 import { useList } from '@siberiacancode/reactuse'
 
-const messages: { message: string; time: string; isMe?: boolean }[] = []
+const messagess: { message: string; time: string; isMe?: boolean }[] = []
 
 for (let i = 0; i < 15; i++) {
-	messages.push({
+	messagess.push({
 		message: 'Hello',
 		time: '10:00',
 		isMe: Math.random() > 0.5,
 	})
 }
 
-export const ChatBody: FCWithClassName = ({ className }) => {
-	const list = useList<{ message: string; time: string; isMe?: boolean }>(messages)
+type Props = {
+	messges?: { message: string; time: string; isMe?: boolean }[]
+}
+
+export const ChatBody: FCWithClassName<Props> = ({ className, messges }) => {
+	const list = useList<{ message: string; time: string; isMe?: boolean }>(messagess)
 	const infiniteScroll = useInfiniteScroll<HTMLDivElement>(
 		async () => {
 			await new Promise((resolve) => {
@@ -44,6 +50,13 @@ export const ChatBody: FCWithClassName = ({ className }) => {
 		},
 		{ distance: 10, direction: 'top' },
 	)
+
+	useEffect(() => {
+		if (messges) {
+			list.set((prev) => [...prev, ...messges])
+			
+		}
+	}, [messges])
 
 	return (
 		<div className={cn('flex h-full w-full flex-col overflow-y-auto px-2', className)}>

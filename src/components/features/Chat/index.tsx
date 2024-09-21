@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import { AnimationPageDiv } from '@/components/layouts/animation-page-div'
 
@@ -14,6 +15,10 @@ import { ChatInput } from './chat-input'
 import { cn } from '@/lib/utils'
 
 export const Chat: FCWithClassName = ({ className }) => {
+	const { pathname } = useLocation()
+	const isChatsPage = pathname === paths.chats
+	const [messages, setMessages] = useState<{ message: string; time: string; isMe?: boolean }[]>([])
+
 	const navigate = useNavigate()
 	const swipe = useSwipe({ onRightSwipe: () => navigate(paths.chats) })
 
@@ -27,9 +32,21 @@ export const Chat: FCWithClassName = ({ className }) => {
 				className,
 			)}
 		>
-			<ChatHeader />
-			<ChatBody />
-			<ChatInput />
+			{isChatsPage ? (
+				<div className='flex h-full w-full flex-col items-center justify-center'>
+					<h2 className='text-xl font-bold text-gray-500 dark:text-gray-400'>Выбирите чат</h2>
+				</div>
+			) : (
+				<>
+					<ChatHeader />
+					<ChatBody messges={messages} />
+					<ChatInput
+						onSubmit={(value) =>
+							setMessages([{ message: value, time: new Date().toLocaleTimeString(), isMe: true }])
+						}
+					/>
+				</>
+			)}
 		</AnimationPageDiv>
 	)
 }

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 
 import { useIsMobile } from '@/hooks/use-is-mobile'
 
@@ -52,7 +52,23 @@ export const AnimationPageDiv: FCWithCAndCN<AnimationPageDivProps> = ({
 
 	if (Comp === 'section') {
 		return (
-			<motion.section
+			<AnimatePresence>
+				<motion.section
+					variants={isLeftAnimation ? routeVariantsLeft : routeVariantsRight}
+					initial='initial'
+					animate='final'
+					className={className}
+					{...props}
+				>
+					{children}
+				</motion.section>
+			</AnimatePresence>
+		)
+	}
+
+	return (
+		<AnimatePresence>
+			<motion.div
 				variants={isLeftAnimation ? routeVariantsLeft : routeVariantsRight}
 				initial='initial'
 				animate='final'
@@ -60,19 +76,7 @@ export const AnimationPageDiv: FCWithCAndCN<AnimationPageDivProps> = ({
 				{...props}
 			>
 				{children}
-			</motion.section>
-		)
-	}
-
-	return (
-		<motion.div
-			variants={isLeftAnimation ? routeVariantsLeft : routeVariantsRight}
-			initial='initial'
-			animate='final'
-			className={className}
-			{...props}
-		>
-			{children}
-		</motion.div>
+			</motion.div>
+		</AnimatePresence>
 	)
 }

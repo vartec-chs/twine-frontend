@@ -1,6 +1,4 @@
-import { AnimatePresence } from 'framer-motion'
-
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import { AuthPage } from '@/pages/auth'
 import { ChatsPage } from '@/pages/chats'
@@ -15,19 +13,13 @@ import { paths } from '@/configs/paths'
 import { ChatsLayout } from '../layouts/ChatsLayout'
 import { MainLayout } from '../layouts/start-layout'
 
-function LocationProvider({ children }: { children: React.ReactNode }) {
-	return <AnimatePresence>{children}</AnimatePresence>
-}
-
-const AnimationRoutes = () => {
-	const location = useLocation()
+export const RoutersProvider = () => {
 	const isMobile = useIsMobile()
-
 	if (isMobile) document.body.classList.add('overflow-hidden')
 
 	return (
-		<>
-			<Routes location={isMobile ? location : undefined} key={isMobile ? location.key : undefined}>
+		<BrowserRouter>
+			<Routes>
 				<Route path={paths.home} element={<MainLayout />}>
 					<Route index element={<HomePage />} />
 					<Route path={paths.auth.signIn} element={<AuthPage />} />
@@ -41,16 +33,6 @@ const AnimationRoutes = () => {
 					<Route path={paths.chat.withId(':id')} element={<ChatsPage />} />
 				</Route>
 			</Routes>
-		</>
-	)
-}
-
-export const RoutersProvider = () => {
-	return (
-		<BrowserRouter>
-			<LocationProvider>
-				<AnimationRoutes />
-			</LocationProvider>
 		</BrowserRouter>
 	)
 }

@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 import { useRef, useState } from 'react'
 
+import { FilePicker } from '@/components/shared/file-picker'
 import { Button } from '@/components/ui/button'
 
 import { useAutosizeTextArea } from '@/hooks/use-autosize-text-area'
@@ -11,18 +12,43 @@ import { type FCWithClassName } from '@/types/general'
 import { Mic, SendHorizontal } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
-import { FilePicker } from '@/components/shared/file-picker'
 
-export const ChatInput: FCWithClassName = ({ className }) => {
+type Props = {
+	onSubmit?: (value: string) => void
+}
+
+export const ChatInput: FCWithClassName<Props> = ({ className, onSubmit }) => {
 	const [text, setText] = useState('')
 	const textAreaRef = useRef<HTMLTextAreaElement>(null)
 
 	useAutosizeTextArea(textAreaRef.current, text)
 
+	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault()
+		if (text) {
+			onSubmit?.(text)
+			setText('')
+		}
+	}
+
+	const onEnterPress = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+		if (e.key === 'Enter' && !e.shiftKey) {
+			e.preventDefault()
+			if (text) {
+				onSubmit?.(text)
+				setText('')
+			}
+		}
+	}
+
 	return (
-		<div className={cn('relative flex w-full items-center border-t p-2', className)}>
+		<form
+			onSubmit={handleSubmit}
+			className={cn('relative flex w-full items-center border-t p-2', className)}
+		>
 			<FilePicker />
 			<textarea
+				onKeyDown={onEnterPress}
 				ref={textAreaRef}
 				value={text}
 				onChange={(e) => setText(e.target.value)}
@@ -48,7 +74,7 @@ export const ChatInput: FCWithClassName = ({ className }) => {
 				aria-owns='message'
 				aria-required='false'
 				name='message'
-				className='scrollbar-thumb-zinc-300 scrollbar-track-zinc-100 scrollbar-thin dark:scrollbar-thumb-zinc-700 dark:scrollbar-track-zinc-900 scrollbar-thumb-rounded min-h-9 max-h-[18dvh]  w-full resize-none rounded-md bg-transparent p-2 text-sm outline-none'
+				className='scrollbar-thumb-rounded max-h-[18dvh] min-h-9 w-full resize-none rounded-md bg-transparent p-2 text-sm outline-none scrollbar-thin scrollbar-track-zinc-100 scrollbar-thumb-zinc-300 dark:scrollbar-track-zinc-900 dark:scrollbar-thumb-zinc-700'
 				placeholder='Сообщение'
 			/>
 
@@ -95,6 +121,6 @@ export const ChatInput: FCWithClassName = ({ className }) => {
 					)}
 				</div>
 			</AnimatePresence>
-		</div>
+		</form>
 	)
 }

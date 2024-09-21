@@ -59,7 +59,7 @@ export const UserList: FCWithClassName = ({ className }) => {
 		<AnimationPageDiv
 			as='section'
 			className={cn(
-				'w-[35%] rounded-l-2xl bg-zinc-100 p-2 dark:bg-zinc-900 max-lg:w-[40%] max-md:w-full max-md:rounded-none md:border',
+				'w-[40%] rounded-l-2xl bg-zinc-100 p-2 dark:bg-zinc-900 max-md:w-full max-md:rounded-none md:border',
 				className,
 			)}
 		>
