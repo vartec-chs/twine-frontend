@@ -64,7 +64,7 @@ export const UserList: FCWithClassName = ({ className }) => {
 		>
 			<SearchChatsInput />
 
-			<ScrollArea className='mt-2 h-[90%]' ref={infiniteScroll.ref}>
+			<ScrollArea className='mt-2 h-[94%]' ref={infiniteScroll.ref}>
 				<div className='flex h-full flex-col gap-1'>
 					<AnimatePresence>
 						{listUsers.value.map((user, index) => (
