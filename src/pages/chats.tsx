@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 import { Chat } from '@/components/features/Chat'
 import { UserList } from '@/components/features/Chat/UserList'
+import { AnimationPageDiv } from '@/components/layouts/animation-page-div'
 
 import { useIsMobile } from '@/hooks/use-is-mobile'
 

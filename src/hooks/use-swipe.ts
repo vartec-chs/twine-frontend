@@ -6,7 +6,7 @@ type UseSwipeProps = {
 	onRightSwipe?: () => void
 }
 
-export const useSwipe = ({ onLeftSwipe, onRightSwipe, minSwipeDistance = 50 }: UseSwipeProps) => {
+export const useSwipe = ({ onLeftSwipe, onRightSwipe, minSwipeDistance = 100 }: UseSwipeProps) => {
 	const [touchStart, setTouchStart] = useState(null)
 	const [touchEnd, setTouchEnd] = useState(null)
 

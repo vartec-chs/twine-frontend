@@ -2,6 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion'
 
 import { ScrollArea } from '@/components/ui/scroll-area'
 
+import { useInfiniteScroll } from '@/hooks/use-infinite-top-scroll'
+
 import { type FCWithClassName } from '@/types/general'
 
 import { Loader2 } from 'lucide-react'
@@ -9,7 +11,6 @@ import { Loader2 } from 'lucide-react'
 import { ChatMessage } from './chat-message'
 import { cn } from '@/lib/utils'
 import { useList } from '@siberiacancode/reactuse'
-import { useInfiniteScroll } from '@/hooks/use-infinite-top-scroll'
 
 const messages: { message: string; time: string; isMe?: boolean }[] = []
 

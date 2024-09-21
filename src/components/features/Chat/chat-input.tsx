@@ -8,7 +8,7 @@ import { useAutosizeTextArea } from '@/hooks/use-autosize-text-area'
 
 import { type FCWithClassName } from '@/types/general'
 
-import { Mic, Paperclip, SendHorizontal } from 'lucide-react'
+import { Mic, SendHorizontal } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
 import { FilePicker } from '@/components/shared/file-picker'
@@ -30,7 +30,7 @@ export const ChatInput: FCWithClassName = ({ className }) => {
 				rows={1}
 				maxLength={2048}
 				minLength={1}
-				autoFocus
+				// autoFocus
 				autoCorrect='off'
 				autoCapitalize='off'
 				spellCheck='false'
